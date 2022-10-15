@@ -1,9 +1,8 @@
 import css from './Statistics.module.css';
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class Statistics extends Component {
-  getArrayOfData = () => {
+const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
+  const getArrayOfData = () => {
     const separateObject = obj => {
       const res = [];
       const keys = Object.keys(obj);
@@ -36,26 +35,25 @@ class Statistics extends Component {
       });
       return res;
     };
-    const arrayOfData = separateObject(this.props);
+    const options = { good, neutral, bad, total, positivePercentage };
+    const arrayOfData = separateObject(options);
     return arrayOfData;
   };
 
-  render() {
-    return (
-      <>
-        <ul className={css.list}>
-          {this.getArrayOfData().map(item => {
-            return (
-              <li key={item.name} className={css.item}>
-                {item.name}: {item.value}
-              </li>
-            );
-          })}
-        </ul>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <ul className={css.list}>
+        {getArrayOfData().map(item => {
+          return (
+            <li key={item.name} className={css.item}>
+              {item.name}: {item.value}
+            </li>
+          );
+        })}
+      </ul>
+    </>
+  );
+};
 
 export default Statistics;
 
