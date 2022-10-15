@@ -1,0 +1,16 @@
+.statistics {
+  text-align: center;
+  color: #252525;
+}
+
+.list {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  list-style: none;
+  padding: 0 60px;
+}
+
+.item {
+  text-align: left;
+}
