@@ -1,25 +1,20 @@
 import css from './FeedbackOptions.module.css';
 import PropTypes from 'prop-types';
 
-const FeedbackOptions = ({ good, neutral, bad, onLeaveFeedback }) => {
+const FeedbackOptions = ({ onLeaveFeedback, ...options }) => {
   const getCapitalize = word => {
     return word[0].toUpperCase() + word.slice(1).toLowerCase();
   };
 
   const getArrayOfData = () => {
     const separateObject = obj => {
-      const res = [];
       const keys = Object.keys(obj);
-      keys.map(key => {
-        res.push({
-          name: key,
-          value: obj[key],
-        });
-        return key;
+      const res = keys.map(key => {
+        return { name: key, value: obj[key] };
       });
+      console.log('res', res);
       return res;
     };
-    const options = { good, neutral, bad };
     const arrayOfData = separateObject(options);
     return arrayOfData;
   };
